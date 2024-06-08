@@ -34,11 +34,20 @@ data class UserDTO(val name: String,val isInRoom: Boolean);
 @Serializable
 data class RoomDTO(val id: Int,val users: MutableList<String>);
 
-@Serializable
-data class ErrorMessageDTO(val message: String);
+//@Serializable
+//data class ErrorMessageDTO(val message: String);
+
+//@Serializable
+//data class WrongMessageDTO(val message: String);
+
+
 
 @Serializable
-data class WrongMessage(val message: String);
+data class Message(val message: String);
+
+typealias WrongMessageDTO = Message;
+
+typealias ErrorMessageDTO = Message;
 
 @Serializable
 sealed class Mess(val message: String) : Jsonable<Mess> {
@@ -61,7 +70,7 @@ sealed class Mess(val message: String) : Jsonable<Mess> {
     @Serializable
     data class ErrorMessage(val payload: ErrorMessageDTO) : Mess("errorMessage");
     @Serializable
-    data class WrongMessage(val payload: WrongMessage) : Mess("wrongMessage");
+    data class WrongMessage(val payload: WrongMessageDTO) : Mess("wrongMessage");
 
     @Serializable
     data class MyInfo(val payload: UserDTO) : Mess("myInfo");
