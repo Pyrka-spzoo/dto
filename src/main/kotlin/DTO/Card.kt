@@ -1,4 +1,4 @@
-package DTO
+package me.szydelko.DTO
 
 sealed class UnoCard(val name: String) {
     data class NumberCard(val color: Color, val number: Int) : UnoCard("NumberCard")
